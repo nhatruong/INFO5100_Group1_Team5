@@ -28,17 +28,30 @@ public class VehicleImpleService {
 		 ************************************/
 		return vehicle;
 	}
-	public Inventory[] searchVechile(String dealerID, String valueToBeSearched, String searchBy){
-		Inventory[] inventories=null; //return an array of length 1
+	public Inventory searchVechile(String dealerID, String valueToBeSearched, String searchBy){
+		Inventory inventory=null; //return an array of length 1
 		/**********************************
 		*
 		*	CODE HERE
 		*
 		 ************************************/
-		return inventories;
+		return inventory;
 	}
-	
+	public boolean addVehicle(Vehicle v) {
+		boolean isSuccess =false;
+		
+		return isSuccess;
+	}
 	public Boolean updateVehicle(String dealerID, String vehicleID, String newValue, String updateType) {
+		boolean isSuccess=false;
+		/**********************************
+		*
+		*	CODE HERE
+		*
+		 ************************************/
+		return isSuccess;
+	}
+	public boolean deleteVehicle(String vehicleID) {
 		boolean isSuccess=false;
 		/**********************************
 		*

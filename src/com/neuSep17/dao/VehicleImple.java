@@ -27,11 +27,16 @@ public class VehicleImple implements IVehicle {
 	public Vehicle getAVehicle(String dealerId, String vehicleIdID) {
 		return vehicleImpleService.getAVehicle(dealerId, vehicleIdID);
 	}
-	public Inventory[] searchVechile(String dealerID, String valueToBeSearched, String searchBy){		
+	public Inventory searchVechile(String dealerID, String valueToBeSearched, String searchBy){		
 		return vehicleImpleService.searchVechile(dealerID, valueToBeSearched, searchBy);
 	}
-	
-	public Boolean updateVehicle(String dealerID, String vehicleID, String newValue, String updateType) {		
+	public boolean addVehicle(Vehicle v) {
+		return vehicleImpleService.addVehicle(v);
+	}
+	public boolean updateVehicle(String dealerID, String vehicleID, String newValue, String updateType) {		
 		return vehicleImpleService.updateVehicle(dealerID, vehicleID, newValue, updateType);
+	}
+	public boolean deleteVehicle(String vehicleID) {
+		return vehicleImpleService.deleteVehicle(vehicleID);
 	}
 }
