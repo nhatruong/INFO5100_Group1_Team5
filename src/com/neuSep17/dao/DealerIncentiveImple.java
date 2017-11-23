@@ -23,22 +23,28 @@ public class DealerIncentiveImple implements IDealerIncentive {
 			this.dealerIncentive =d;
 			impleService= new DealerIncentiveImpleService();
 		}
+		@Override
 		public ArrayList<DealerIncentive> getAllIncentives(){
 			return impleService.getAllIncentives(dealerIncentive.getDealerId());
 		}
 		// may have a list of incentive. Need to check the array list
+		@Override
 		public ArrayList<DealerIncentive> createIncentive() {
 			return impleService.createIncentive(dealerIncentive.getDealerId(), dealerIncentive.getIncentives());
 		}
+		@Override
 		public DealerIncentive getIncentive(String incentiveID) {
 			return impleService.getIncentive(dealerIncentive.getDealerId(), incentiveID);
 		}
+		@Override
 		public DealerIncentive updateIncentive(String incentiveID, String newValue, String updatingField) {
 			return impleService.updateIncentive(dealerIncentive.getDealerId(), incentiveID, newValue, updatingField);
 		}
+		@Override
 		public DealerIncentive udpateIncentiveCriteria(String incentiveID, ArrayList<String> cArrayList) {
 			return impleService.udpateIncentiveCriteria(dealerIncentive.getDealerId(),incentiveID, cArrayList);
 		}
+		@Override
 		public void deleteIncentive(String incentiveID) {
 			impleService.deleteIncentive(dealerIncentive.getDealerId(),incentiveID);
 		}

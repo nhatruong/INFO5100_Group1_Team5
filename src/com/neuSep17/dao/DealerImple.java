@@ -19,18 +19,23 @@ public class DealerImple implements IDealer {
 	public DealerImple() {
 		dealerImpleService = new DealerImpleService();
 	}
+	@Override
 	public ArrayList<Dealer>getDealers(){				
 		return dealerImpleService.getDealers();
 	}
+	@Override
 	public Dealer getADealer(String dealerID) {		
 		return dealerImpleService.getADealer(dealerID);
 	}
+	@Override
 	public Boolean updateDealer(String dealerID, String newValue, String updateType) {		
 		return dealerImpleService.updateDealer(dealerID, newValue, updateType);
 	}
+	@Override
 	public Boolean addDealer(Dealer dealer) {	
 		return dealerImpleService.addDealer(dealer);
 	}
+	@Override
 	public Boolean deleteDealer(String dealerID) {	
 		return dealerImpleService.deleteDealer(dealerID);
 		
