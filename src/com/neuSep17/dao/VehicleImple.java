@@ -2,6 +2,7 @@ package com.neuSep17.dao;
 
 import java.util.ArrayList;
 
+import com.neuSep17.dto.Dealer;
 import com.neuSep17.dto.Inventory;
 import com.neuSep17.dto.Vehicle;
 import com.neuSep17.service.VehicleImpleService;
@@ -17,26 +18,28 @@ import com.neuSep17.service.VehicleImpleService;
 //provide implementations for IVehicle interface
 public class VehicleImple implements IVehicle {
 	
+	private Dealer dealer;
 	private VehicleImpleService vehicleImpleService;
-	public VehicleImple() {
+	public VehicleImple(Dealer d) {
+		this.dealer =d;
 		vehicleImpleService = new VehicleImpleService();
 	}
-	public ArrayList<Inventory> getAllVehicles(String dealerID){		
-		return vehicleImpleService.getAllVehicles(dealerID);		
+	public ArrayList<Inventory> getAllVehicles(){		
+		return vehicleImpleService.getAllVehicles(dealer.getId());		
 	}
-	public Vehicle getAVehicle(String dealerId, String vehicleIdID) {
-		return vehicleImpleService.getAVehicle(dealerId, vehicleIdID);
+	public Vehicle getAVehicle(String vehicleIdID) {
+		return vehicleImpleService.getAVehicle(dealer.getId(), vehicleIdID);
 	}
-	public Inventory searchVechile(String dealerID, String valueToBeSearched, String searchBy){		
-		return vehicleImpleService.searchVechile(dealerID, valueToBeSearched, searchBy);
+	public ArrayList<Inventory> searchVechile(String valueToBeSearched, String searchBy){		
+		return vehicleImpleService.searchVechile(dealer.getId(), valueToBeSearched, searchBy);
 	}
 	public boolean addVehicle(Vehicle v) {
-		return vehicleImpleService.addVehicle(v);
+		return vehicleImpleService.addVehicle(dealer.getId(), v);
 	}
-	public boolean updateVehicle(String dealerID, String vehicleID, String newValue, String updateType) {		
-		return vehicleImpleService.updateVehicle(dealerID, vehicleID, newValue, updateType);
+	public boolean updateVehicle(String vehicleID, String newValue, String updateType) {		
+		return vehicleImpleService.updateVehicle(dealer.getId(), vehicleID, newValue, updateType);
 	}
 	public boolean deleteVehicle(String vehicleID) {
-		return vehicleImpleService.deleteVehicle(vehicleID);
+		return vehicleImpleService.deleteVehicle(dealer.getId(), vehicleID);
 	}
 }

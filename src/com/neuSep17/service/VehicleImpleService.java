@@ -8,7 +8,10 @@ import com.neuSep17.dto.Vehicle;
 //THIS CLASS IMPLEMENTS LOGIC TO ACCESS gmps-****-*** files
 
 public class VehicleImpleService {
+	//private Vehicle vehicle;
 	public VehicleImpleService() {}
+	
+
 	public ArrayList<Inventory> getAllVehicles(String dealerID){
 		ArrayList<Inventory> arrInventory =null;
 		/**********************************
@@ -19,8 +22,9 @@ public class VehicleImpleService {
 		return arrInventory;
 		
 	}
-	public Vehicle getAVehicle(String dealerId, String vehicleIdID) {
+	public Vehicle getAVehicle(String dealerId, String vehicleIdID) {		
 		Vehicle vehicle =null;
+		
 		/**********************************
 		*
 		*	CODE HERE
@@ -28,8 +32,8 @@ public class VehicleImpleService {
 		 ************************************/
 		return vehicle;
 	}
-	public Inventory searchVechile(String dealerID, String valueToBeSearched, String searchBy){
-		Inventory inventory=null; //return an array of length 1
+	public ArrayList<Inventory> searchVechile(String dealerID, String valueToBeSearched, String searchBy){
+		ArrayList<Inventory> inventory=null; //return an array of length 1
 		/**********************************
 		*
 		*	CODE HERE
@@ -37,7 +41,7 @@ public class VehicleImpleService {
 		 ************************************/
 		return inventory;
 	}
-	public boolean addVehicle(Vehicle v) {
+	public boolean addVehicle(String dealerId, Vehicle v) {
 		boolean isSuccess =false;
 		
 		return isSuccess;
@@ -51,7 +55,7 @@ public class VehicleImpleService {
 		 ************************************/
 		return isSuccess;
 	}
-	public boolean deleteVehicle(String vehicleID) {
+	public boolean deleteVehicle(String dealerID, String vehicleID) {
 		boolean isSuccess=false;
 		/**********************************
 		*
