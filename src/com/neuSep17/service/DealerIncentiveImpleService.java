@@ -6,7 +6,7 @@ import com.neuSep17.dto.DealerIncentive;
 import com.neuSep17.dto.Incentive;
 
 //THIS CLASS IMPLEMENTS LOGIC TO ACCESS INCENTIVE FILE
-public class IncentiveImpleService {
+public class DealerIncentiveImpleService {
 	public ArrayList<DealerIncentive> getAllIncentives(String dealerID){
 		ArrayList<DealerIncentive> dealerIncentives=null;
 		/**********************************

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.neuSep17.dto.DealerIncentive;
 import com.neuSep17.dto.Incentive;
-import com.neuSep17.service.IncentiveImpleService;
+import com.neuSep17.service.DealerIncentiveImpleService;
 
 /*********************************************************
  * This class does not access the INCENTIVE file directly.
@@ -18,10 +18,10 @@ public class DealerIncentiveImple implements IDealerIncentive {
 		
 		private DealerIncentive dealerIncentive;
 		
-		private IncentiveImpleService impleService;
+		private DealerIncentiveImpleService impleService;
 		public DealerIncentiveImple(DealerIncentive d) {
 			this.dealerIncentive =d;
-			impleService= new IncentiveImpleService();
+			impleService= new DealerIncentiveImpleService();
 		}
 		public ArrayList<DealerIncentive> getAllIncentives(){
 			return impleService.getAllIncentives(dealerIncentive.getDealerId());

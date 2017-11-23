@@ -1,6 +1,7 @@
 package com.neuSep17.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.neuSep17.dto.Inventory;
 import com.neuSep17.dto.Vehicle;
@@ -32,8 +33,8 @@ public class VehicleImpleService {
 		 ************************************/
 		return vehicle;
 	}
-	public ArrayList<Inventory> searchVechile(String dealerID, String valueToBeSearched, String searchBy){
-		ArrayList<Inventory> inventory=null; //return an array of length 1
+	public ArrayList<Inventory> searchVechile(String dealerID, HashMap<String, String> searchCretiria){
+		ArrayList<Inventory> inventory=null;
 		/**********************************
 		*
 		*	CODE HERE

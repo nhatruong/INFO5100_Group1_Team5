@@ -1,6 +1,7 @@
 package com.neuSep17.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.neuSep17.dto.Dealer;
 import com.neuSep17.dto.Inventory;
@@ -16,6 +17,7 @@ import com.neuSep17.service.VehicleImpleService;
  *********************************************************/
 
 //provide implementations for IVehicle interface
+
 public class VehicleImple implements IVehicle {
 	
 	private Dealer dealer;
@@ -25,21 +27,28 @@ public class VehicleImple implements IVehicle {
 		this.dealer =d;
 		vehicleImpleService = new VehicleImpleService();
 	}
-	public ArrayList<Inventory> getAllVehicles(){		
-		return vehicleImpleService.getAllVehicles(dealer.getId());		
+	
+	@Override	
+	public ArrayList<Inventory> getAllVehicles(){	
+			return vehicleImpleService.getAllVehicles(dealer.getId());					
 	}
+	@Override
 	public Vehicle getAVehicle(String vehicleIdID) {
 		return vehicleImpleService.getAVehicle(dealer.getId(), vehicleIdID);
 	}
-	public ArrayList<Inventory> searchVechile(String valueToBeSearched, String searchBy){		
-		return vehicleImpleService.searchVechile(dealer.getId(), valueToBeSearched, searchBy);
+	@Override
+	public ArrayList<Inventory> searchVechile(HashMap<String, String> searchCretiria){		
+		return vehicleImpleService.searchVechile(dealer.getId(), searchCretiria);
 	}
+	@Override
 	public boolean addVehicle(Vehicle v) {
 		return vehicleImpleService.addVehicle(dealer.getId(), v);
 	}
+	@Override
 	public boolean updateVehicle(String vehicleID, String newValue, String updateType) {		
 		return vehicleImpleService.updateVehicle(dealer.getId(), vehicleID, newValue, updateType);
 	}
+	@Override
 	public boolean deleteVehicle(String vehicleID) {
 		return vehicleImpleService.deleteVehicle(dealer.getId(), vehicleID);
 	}
