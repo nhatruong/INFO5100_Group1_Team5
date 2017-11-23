@@ -47,7 +47,7 @@ public class VehicleImpleService {
 		
 		return isSuccess;
 	}
-	public Boolean updateVehicle(String dealerID, String vehicleID, String newValue, String updateType) {
+	public Boolean updateVehicle(String dealerID, String vehicleID, HashMap<String, String> updateFieldsAndValues) {
 		boolean isSuccess=false;
 		/**********************************
 		*

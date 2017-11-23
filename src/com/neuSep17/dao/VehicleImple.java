@@ -45,8 +45,8 @@ public class VehicleImple implements IVehicle {
 		return vehicleImpleService.addVehicle(dealer.getId(), v);
 	}
 	@Override
-	public boolean updateVehicle(String vehicleID, String newValue, String updateType) {		
-		return vehicleImpleService.updateVehicle(dealer.getId(), vehicleID, newValue, updateType);
+	public boolean updateVehicle(String vehicleID, HashMap<String, String> updateFieldsAndValues) {		
+		return vehicleImpleService.updateVehicle(dealer.getId(), vehicleID, updateFieldsAndValues);
 	}
 	@Override
 	public boolean deleteVehicle(String vehicleID) {

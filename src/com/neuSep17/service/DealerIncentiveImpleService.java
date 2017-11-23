@@ -1,6 +1,7 @@
 package com.neuSep17.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.neuSep17.dto.DealerIncentive;
 import com.neuSep17.dto.Incentive;
@@ -36,7 +37,7 @@ public class DealerIncentiveImpleService {
 		 ************************************/
 		return incent;
 	}
-	public DealerIncentive updateIncentive(String dealerID, String incentiveID, String newValue, String updatingField) {
+	public DealerIncentive updateIncentive(String dealerID, HashMap<String, String> updatesFieldAndValues) {
 		DealerIncentive incent =null;
 		/**********************************
 		*

@@ -1,6 +1,7 @@
 package com.neuSep17.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.neuSep17.dto.Dealer;
 
@@ -28,7 +29,7 @@ public class DealerImpleService {
 		 ************************************/
 		return dealer;
 	}
-	public Boolean updateDealer(String dealerID, String newValue, String updateType) {
+	public boolean updateDealer(String dealerID, HashMap<String, String> updateFieldsAndValues) {
 		boolean isSuccess =false;
 		/**********************************
 		*
@@ -37,7 +38,7 @@ public class DealerImpleService {
 		 ************************************/
 		return isSuccess;
 	}
-	public Boolean addDealer(Dealer dealer) {
+	public boolean addDealer(Dealer dealer) {
 		boolean isSuccess =false;
 		/**********************************
 		*
@@ -46,7 +47,7 @@ public class DealerImpleService {
 		 ************************************/
 		return isSuccess;
 	}
-	public Boolean deleteDealer(String dealerID) {
+	public boolean deleteDealer(String dealerID) {
 		boolean isSuccess =false;
 		/**********************************
 		*

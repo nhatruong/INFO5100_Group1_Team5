@@ -1,6 +1,7 @@
 package com.neuSep17.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.neuSep17.dto.Dealer;
 import com.neuSep17.service.DealerImpleService;
@@ -28,15 +29,15 @@ public class DealerImple implements IDealer {
 		return dealerImpleService.getADealer(dealerID);
 	}
 	@Override
-	public Boolean updateDealer(String dealerID, String newValue, String updateType) {		
-		return dealerImpleService.updateDealer(dealerID, newValue, updateType);
+	public boolean updateDealer(String dealerID, HashMap<String, String> updateFieldsAndValues) {		
+		return dealerImpleService.updateDealer(dealerID, updateFieldsAndValues);
 	}
 	@Override
-	public Boolean addDealer(Dealer dealer) {	
+	public boolean addDealer(Dealer dealer) {	
 		return dealerImpleService.addDealer(dealer);
 	}
 	@Override
-	public Boolean deleteDealer(String dealerID) {	
+	public boolean deleteDealer(String dealerID) {	
 		return dealerImpleService.deleteDealer(dealerID);
 		
 	}

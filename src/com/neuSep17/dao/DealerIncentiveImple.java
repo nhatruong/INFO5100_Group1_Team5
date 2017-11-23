@@ -1,9 +1,8 @@
 package com.neuSep17.dao;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import com.neuSep17.dto.DealerIncentive;
-import com.neuSep17.dto.Incentive;
 import com.neuSep17.service.DealerIncentiveImpleService;
 
 /*********************************************************
@@ -37,8 +36,8 @@ public class DealerIncentiveImple implements IDealerIncentive {
 			return impleService.getIncentive(dealerIncentive.getDealerId(), incentiveID);
 		}
 		@Override
-		public DealerIncentive updateIncentive(String incentiveID, String newValue, String updatingField) {
-			return impleService.updateIncentive(dealerIncentive.getDealerId(), incentiveID, newValue, updatingField);
+		public DealerIncentive updateIncentive(String incentiveID, HashMap<String, String> updateFieldsAndValues) {
+			return impleService.updateIncentive(dealerIncentive.getDealerId(), updateFieldsAndValues);
 		}
 		@Override
 		public DealerIncentive udpateIncentiveCriteria(String incentiveID, ArrayList<String> cArrayList) {
