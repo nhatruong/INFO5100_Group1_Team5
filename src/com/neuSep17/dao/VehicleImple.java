@@ -20,6 +20,7 @@ public class VehicleImple implements IVehicle {
 	
 	private Dealer dealer;
 	private VehicleImpleService vehicleImpleService;
+	
 	public VehicleImple(Dealer d) {
 		this.dealer =d;
 		vehicleImpleService = new VehicleImpleService();
