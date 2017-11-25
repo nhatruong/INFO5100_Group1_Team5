@@ -1,12 +1,21 @@
 package com.neuSep17.dao;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.neuSep17.dto.Category;
 import com.neuSep17.dto.Dealer;
 import com.neuSep17.dto.Inventory;
 import com.neuSep17.dto.Vehicle;
+import com.neuSep17.io.FileReading;
 import com.neuSep17.service.VehicleImpleService;
+import com.neuSep17.validation.DealerValidation;
+import com.neuSep17.validation.VehicleValidation;
 
 /*********************************************************
  * This class does not access gmps-**** files directly.
@@ -36,20 +45,51 @@ public class VehicleImple implements IVehicle {
 	public Vehicle getAVehicle(String vehicleIdID) {
 		return vehicleImpleService.getAVehicle(dealer.getId(), vehicleIdID);
 	}
-	@Override
-	public ArrayList<Inventory> searchVechile(HashMap<String, String> searchCretiria){		
+	
+	/********************************************************************
+	 * HashMap<String, String>: 
+	 * 		First String: must be one of the fields in the Vehicle class
+	 * 					(id, webid, make, year etc..)	
+	 * 		Second String: Corresponding value to update
+	 * Exceptions:
+	 * 		FileNotFoundExceptions: if the dealer file not found
+	 * 		NullPointerException:	if the HashMap is null
+	 * 		IllegalStateException:	if the HashMap is empty
+	 */
+	@Override	
+	public ArrayList<Inventory> searchVechile(HashMap<String, String> searchCretiria){	
+		VehicleValidation.checkHashMap(searchCretiria);
 		return vehicleImpleService.searchVechile(dealer.getId(), searchCretiria);
 	}
+	/********************************************************************
+	 * Exceptions:
+	 * 		FileNotFoundExceptions: if the dealer file not found
+	 * 		IllegalArgumentException : if id is already added
+	 */	
 	@Override
-	public boolean addVehicle(Vehicle v) {
+	public boolean addVehicle(Vehicle v) throws IOException {		 
+		validateVehicleID("data\\"+v.getWebID(), v.getID());//vehicle file and vehicle id
 		return vehicleImpleService.addVehicle(dealer.getId(), v);
 	}
+	//validate dealer name and vehicleID
+	private void validateVehicleID(String fileName, String vehicleID) throws IOException {
+		FileReading fileReading = new FileReading(new File(fileName));
+		fileReading.checkID(vehicleID);
+	}
+	
+	/********************************************************************
+	 * Exceptions:
+	 * 		NullPointerException:	if the HashMap is null
+	 * 		IllegalStateException:	if the HashMap is empty
+	 */
 	@Override
-	public boolean updateVehicle(String vehicleID, HashMap<String, String> updateFieldsAndValues) {		
+	public boolean updateVehicle(String vehicleID, HashMap<String, String> updateFieldsAndValues) {
+		DealerValidation.checkHashMap(updateFieldsAndValues);
 		return vehicleImpleService.updateVehicle(dealer.getId(), vehicleID, updateFieldsAndValues);
 	}
 	@Override
 	public boolean deleteVehicle(String vehicleID) {
 		return vehicleImpleService.deleteVehicle(dealer.getId(), vehicleID);
 	}
+	
 }

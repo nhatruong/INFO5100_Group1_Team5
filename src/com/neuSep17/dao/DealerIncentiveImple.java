@@ -18,6 +18,7 @@ public class DealerIncentiveImple implements IDealerIncentive {
 		private DealerIncentive dealerIncentive;
 		
 		private DealerIncentiveImpleService impleService;
+		
 		public DealerIncentiveImple(DealerIncentive d) {
 			this.dealerIncentive =d;
 			impleService= new DealerIncentiveImpleService();
@@ -35,10 +36,21 @@ public class DealerIncentiveImple implements IDealerIncentive {
 		public DealerIncentive getIncentive(String incentiveID) {
 			return impleService.getIncentive(dealerIncentive.getDealerId(), incentiveID);
 		}
+		
+		/********************************************************************
+		 * HashMap<String, String>: 
+		 * 		First String: must be one of the fields in the Incentive class
+		 * 					(ID, title, startDate, endDate, description, cashvalue)	
+		 * 		Second String: Corresponding value
+		 */
 		@Override
 		public DealerIncentive updateIncentive(String incentiveID, HashMap<String, String> updateFieldsAndValues) {
 			return impleService.updateIncentive(dealerIncentive.getDealerId(), updateFieldsAndValues);
 		}
+		/********************************************************************
+		 * ArrayList<String>: 
+		 * 		an list of criteria used for this incentive. Ok to create an list of 1 element
+		 */
 		@Override
 		public DealerIncentive udpateIncentiveCriteria(String incentiveID, ArrayList<String> cArrayList) {
 			return impleService.udpateIncentiveCriteria(dealerIncentive.getDealerId(),incentiveID, cArrayList);

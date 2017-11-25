@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Incentive {
 	private String ID;
 	private String title;
-	private String startDate; //format should be "YYYYMMDD"
-	private String endDate;//format should be "YYYYMMDD"
+	private String startDate; //format should be "MM-DD-YYY"
+	private String endDate;//format should be "MM-DD-YYY"
 	private String description;
 	private float cashValue;
 	

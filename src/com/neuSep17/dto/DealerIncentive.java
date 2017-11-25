@@ -7,6 +7,9 @@ public class DealerIncentive {
 	private String dealerId;
     private ArrayList<Incentive> incentives = new ArrayList<>();
 
+    public DealerIncentive(String dealerID, ArrayList<Incentive> incentives) {
+		this.dealerId = dealerID; this.incentives= incentives;
+	}
     public String getDealerId() {
         return dealerId;
     }

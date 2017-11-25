@@ -1,27 +1,47 @@
 package com.neuSep17.dto;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Year;
 
 
 public class Vehicle {
 
         private String id;
-        private Integer year;
+        String webId;
+        private Category category;
+        private int year;
         private String make;
         private String model;
         private String trim;
-        private Category category;
+       
         private String bodyType;
-        private Float price;
+        private Double price;
         private URL photoUrl;
         
-        public Vehicle() {			
-		}
+   //     public Vehicle() {			
+	//	}
         public Vehicle(String[] arr){
-        	
+        	this.id = arr[0];
+            this.webId = arr[1];
+            this.category = Category.getCategory(arr[2].toLowerCase());
+            this.year = Integer.parseInt(arr[3]);
+            this.make = arr[4];
+            this.model = arr[5];
+            this.trim = arr[6];
+            this.bodyType = arr[7];
+            this.price = Double.parseDouble(arr[8]);
+            try {
+                this.photoUrl = new URL(arr[9]);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         public void setID(String id) {
         	this.id=id;
+        }
+        public void setWebID(String webId) {
+        	this.webId=webId;
         }
         public void setYear(int year) {
         	this.year=year;
@@ -41,7 +61,7 @@ public class Vehicle {
         public void setBodyType(String type) {
         	this.bodyType=type;
         }
-        public void setPrice(Float price) {
+        public void setPrice(Double price) {
         	this.price=price;
         }
         public void setPhotoURL(URL url) {
@@ -50,6 +70,9 @@ public class Vehicle {
         
         public String getID() {
         	return id;
+        }
+        public String getWebID() {
+        	return webId;
         }
         public int getYear() {
         	return year;
@@ -69,7 +92,7 @@ public class Vehicle {
         public String getBodyType() {
         	return bodyType;
         }
-        public float getPrice() {
+        public double getPrice() {
         	return price;
         }
         public URL getPhotoURL() {
