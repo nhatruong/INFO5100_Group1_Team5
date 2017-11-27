@@ -49,7 +49,7 @@ public class VehicleImple implements IVehicle {
 	/********************************************************************
 	 * HashMap<String, String>: 
 	 * 		First String: must be one of the fields in the Vehicle class
-	 * 					(id, webid, make, year etc..)	
+	 * 					(model, make, year etc..)	
 	 * 		Second String: Corresponding value to update
 	 * Exceptions:
 	 * 		FileNotFoundExceptions: if the dealer file not found
@@ -59,7 +59,7 @@ public class VehicleImple implements IVehicle {
 	@Override	
 	public ArrayList<Inventory> searchVechile(HashMap<String, String> searchCretiria){	
 		VehicleValidation.checkHashMap(searchCretiria);
-		return vehicleImpleService.searchVechile(dealer.getId(), searchCretiria);
+		return vehicleImpleService.searchVechile(dealer.getId(),searchCretiria);
 	}
 	/********************************************************************
 	 * Exceptions:
