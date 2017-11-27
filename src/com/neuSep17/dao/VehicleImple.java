@@ -57,9 +57,9 @@ public class VehicleImple implements IVehicle {
 	 * 		IllegalStateException:	if the HashMap is empty
 	 */
 	@Override	
-	public ArrayList<Inventory> searchVechile(String vehicleID, HashMap<String, String> searchCretiria){	
+	public ArrayList<Inventory> searchVechile(HashMap<String, String> searchCretiria){	
 		VehicleValidation.checkHashMap(searchCretiria);
-		return vehicleImpleService.searchVechile(dealer.getId(), vehicleID, searchCretiria);
+		return vehicleImpleService.searchVechile(dealer.getId(),searchCretiria);
 	}
 	/********************************************************************
 	 * Exceptions:

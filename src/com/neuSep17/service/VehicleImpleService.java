@@ -33,7 +33,7 @@ public class VehicleImpleService {
 		 ************************************/
 		return vehicle;
 	}
-	public ArrayList<Inventory> searchVechile(String dealerID, String vehicleID, HashMap<String, String> searchCretiria){
+	public ArrayList<Inventory> searchVechile(String dealerID, HashMap<String, String> searchCretiria){
 		ArrayList<Inventory> inventory=null;
 		/**********************************
 		*
