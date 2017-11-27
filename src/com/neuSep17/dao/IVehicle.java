@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public interface IVehicle {
 
-	ArrayList<Inventory> getAllVehicles();	
+	Inventory getAllVehicles();	
 	Vehicle getAVehicle(String vehicleIdID);	
 	ArrayList<Inventory> searchVechile(HashMap<String, String> searchCriteria);	
 	boolean addVehicle(Vehicle v) throws FileNotFoundException, IOException;

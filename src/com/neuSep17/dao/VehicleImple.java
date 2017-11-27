@@ -38,7 +38,7 @@ public class VehicleImple implements IVehicle {
 	}
 	
 	@Override	
-	public ArrayList<Inventory> getAllVehicles(){	
+	public Inventory getAllVehicles(){	
 			return vehicleImpleService.getAllVehicles(dealer.getId());					
 	}
 	@Override

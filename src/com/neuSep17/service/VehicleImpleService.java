@@ -13,14 +13,14 @@ public class VehicleImpleService {
 	public VehicleImpleService() {}
 	
 
-	public ArrayList<Inventory> getAllVehicles(String dealerID){
-		ArrayList<Inventory> arrInventory =null;
+	public Inventory getAllVehicles(String dealerID){
+		Inventory inventory =null;
 		/**********************************
 		*
 		*	CODE HERE
 		*
 		 ************************************/
-		return arrInventory;
+		return inventory;
 		
 	}
 	public Vehicle getAVehicle(String dealerId, String vehicleIdID) {		
@@ -44,7 +44,11 @@ public class VehicleImpleService {
 	}
 	public boolean addVehicle(String dealerId, Vehicle v) {
 		boolean isSuccess =false;
-		
+		/**********************************
+		*
+		*	CODE HERE
+		*
+		 ************************************/
 		return isSuccess;
 	}
 	public Boolean updateVehicle(String dealerID, String vehicleID, HashMap<String, String> updateFieldsAndValues) {
