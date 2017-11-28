@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class FileWriting {
 	private BufferedWriter bufferedWriter;
-	public FileWriting(File file) throws IOException {
-		bufferedWriter = new BufferedWriter(new FileWriter(file));
+	public FileWriting(File file, boolean append) throws IOException {
+		bufferedWriter = new BufferedWriter(new FileWriter(file, append));
 	}
 	public BufferedWriter getBufferedWriter() {
 		return bufferedWriter;
