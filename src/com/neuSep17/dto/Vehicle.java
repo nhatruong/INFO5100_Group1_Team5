@@ -19,8 +19,8 @@ public class Vehicle {
         private Double price;
         private URL photoUrl;
         
-   //     public Vehicle() {			
-	//	}
+        public Vehicle() {
+		}
         public Vehicle(String[] arr){
         	this.id = arr[0];
             this.webId = arr[1];
