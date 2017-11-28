@@ -12,7 +12,7 @@ public interface IVehicle {
 
 	Inventory getAllVehicles();	
 	Vehicle getAVehicle(String vehicleIdID);	
-	ArrayList<Inventory> searchVechile(HashMap<String, String> searchCriteria);	
+	Inventory searchVechile(HashMap<String, String> searchCriteria);	
 	boolean addVehicle(Vehicle v) throws FileNotFoundException, IOException;
 	boolean updateVehicle(String vehicleID, HashMap<String, String>updateFieldsAndValues);
 	boolean deleteVehicle(String vehicleID);
