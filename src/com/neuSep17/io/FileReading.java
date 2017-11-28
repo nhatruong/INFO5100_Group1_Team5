@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import com.neuSep17.dto.*;
+
+
 public class FileReading {
 	//private FileReading fileReading;
 	//private BufferedReader bufferedReader;
@@ -39,7 +44,29 @@ public class FileReading {
 			}	
 		}	
 	}
+	
+	
+// This function is used by the Inventory constructor to populate vehicle data --Zhongfei
+    public static ArrayList<Vehicle> readAndGetVehicles(File file) {
+        ArrayList<Vehicle> vs = new ArrayList<>();
+        Pattern pattern = Pattern.compile("~");
+        try (BufferedReader in = new BufferedReader(new FileReader(file));) {
+            String line = in.readLine(); // skip first line
+            while ((line = in.readLine()) != null) {
+                String[] x = pattern.split(line);
+                Vehicle v = new Vehicle(x);
+                vs.add(v);
+            }
+        } catch (FileNotFoundException f) {
+            f.printStackTrace();
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+        return vs;
+    }
+
 }
+
 /*
 public void read(File file) throws IOException {
  * private BufferedReader buffReader;
