@@ -2,12 +2,26 @@ package com.neuSep17.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
+import com.neuSep17.dao.DealerIncentiveImple;
 import com.neuSep17.dto.DealerIncentive;
 import com.neuSep17.dto.Incentive;
 
+
 //THIS CLASS IMPLEMENTS LOGIC TO ACCESS INCENTIVE FILE
 public class DealerIncentiveImpleService {
+
+	Map<String, DealerIncentive> map;
+
+	//main function is created for testing
+	public static void main(String[] args){
+		DealerIncentiveImpleService test = new DealerIncentiveImpleService();
+		
+
+
+
+	}
 	public ArrayList<DealerIncentive> getAllIncentives(String dealerID){
 		ArrayList<DealerIncentive> dealerIncentives=null;
 		/**********************************
