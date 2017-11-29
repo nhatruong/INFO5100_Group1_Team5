@@ -65,7 +65,33 @@ public class FileReading {
         return vs;
     }
 
+    //This function is used by the Dealer Incentive constructor to populate incentive data -- Zezhu
+    public static ArrayList<Incentive> readAndGetIncentives(File file){
+        ArrayList<Incentive> is = new ArrayList<>();
+        Pattern pattern = Pattern.compile("~");
+        try(BufferedReader in = new BufferedReader(new FileReader(file));){
+            String line = in.readLine(); //skip first line
+            while((line = in.readLine()) != null){
+                String[] x = pattern.split(line);
+                float cashValue = Float.parseFloat(x[6]);
+                //split last field -- discount criteria
+                String[] dc = x[7].split("\\u002B");
+                ArrayList<String> discountCriteria = new ArrayList<>();
+                discountCriteria.add(dc[0]);
+                discountCriteria.add(dc[1]);
+                Incentive i = new Incentive(x[0], x[1], x[2], x[3], x[4], x[5], cashValue, discountCriteria);
+                is.add(i);
+            }
+        } catch (FileNotFoundException f){
+            f.printStackTrace();
+        } catch (IOException i){
+            i.printStackTrace();
+        }
+        return is;
+    }
 }
+
+
 
 /*
 public void read(File file) throws IOException {
