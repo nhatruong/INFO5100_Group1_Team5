@@ -1,52 +1,20 @@
 package com.neuSep17.service;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 import com.neuSep17.dto.Dealer;
-import com.neuSep17.io.FileReading;
-import com.neuSep17.io.FileWriting;
-
+import com.neuSep17.io.DealerFileReading;
+import com.neuSep17.io.DealerFileWriting;
 //THIS CLASS IMPLEMENTS LOGIC TO ACCESS DEALER FILE
 
-public class DealerImpleService {
+public class  DealerImpleService {
 	Map<String, Dealer> map;
-
-	public static void main(String[] args) {
-
-		try {
-			DealerImpleService test = new DealerImpleService();
-			//Dealer dealer = new Dealer("HAHA", "Haha", );
-			HashMap<String, String> map = new HashMap<>();
-			map.put("url", "haha");
-			test.updateDealer("haha", map);
-			//test.addDealer(new Dealer("gmps-haha","gmps-haha", "www.4399.com"));
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
+	
 	public DealerImpleService() throws IOException {
-		map = new LinkedHashMap<>();
-		BufferedReader reader = null;
-		FileReading reading = new FileReading(new File("data/dealers"));
-		reader = reading.getBufferedReader();
-		while (true) {
-			String line = reader.readLine();
-			if (line == null) {
-				break;
-			}
-
-			String[] strs = line.split("\t");
-			reading.checkID(strs[0]);
-			map.put(strs[0], new Dealer(strs[0], strs[0], strs[2]));
-		}
-		reader.close();
+		DealerFileReading reading = new DealerFileReading(new File("data/dealers"));
+		map = reading.loading();
 	}
 	
 	public ArrayList<Dealer> getDealers(){
@@ -64,11 +32,11 @@ public class DealerImpleService {
 
 	public boolean updateDealer(String dealerID, HashMap<String, String> updateFieldsAndValues) {
 		boolean isSuccess =false;
+		if (!dealerID.contains(dealerID)) {
+			return isSuccess;
+		}
 		Dealer dealer = map.get(dealerID);
 		for (String m : updateFieldsAndValues.keySet()) {
-			if (!dealerID.equals(m)) {
-				continue;
-			}
 
 			if (m.equals("id")) {
 				dealer.setId(updateFieldsAndValues.get(m));
@@ -89,20 +57,19 @@ public class DealerImpleService {
 
 		}
 
-		saveToFile("data/dealers");
+		saveFile();
 		return isSuccess;
 	}
 
 	public boolean addDealer(Dealer dealer) {
 		boolean isSuccess =false;
-		for (String m : map.keySet()) {
-			if (m.equals(dealer.getId())) {
-				return isSuccess;
-			}
+
+		if (map.containsKey(dealer.getId())) {
+			return isSuccess;
 		}
 
 		map.put(dealer.getId(), new Dealer(dealer.getId(), dealer.getName(), dealer.getUrl()));
-		saveToFile("data/dealers");
+		saveFile();
 		return isSuccess;
 	}
 
@@ -117,31 +84,18 @@ public class DealerImpleService {
 		}
 
 		map.remove(str);
-		saveToFile("data/dealers");
+		saveFile();
 		return isSuccess;
 		
 	}
 
-	private void saveToFile(String pathName)  {
-		BufferedWriter writer = null;
+	private void saveFile() {
 		try {
-			FileWriting writing = new FileWriting(new File(pathName));
-			writer = writing.getBufferedWriter();
-			for (String m : map.keySet()) {
-				writer.write(map.get(m).getId() + "\t" +
-						"en_US" + "\t" + map.get(m).getUrl());
-				writer.newLine();
-			}
-		} catch (Exception e) {
-
-		} finally {
-			try {
-				writer.flush();
-				writer.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			DealerFileWriting writing = new DealerFileWriting(new File("data/dealers"));
+			writing.saveToFile(map);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
 	}
+
 }
